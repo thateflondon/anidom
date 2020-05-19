@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>A Propos de Nous</title>
+    <title>Connexion-Inscription</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/a_propos.css">
+    <link rel="stylesheet" href="css/connexion_inscription.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
 <body>
-    <div class=""> <!--container désactivé pour avoir le bckgr sur tout le large, adapter le footer-->
+    <div class="">
+        <!--container désactivé pour avoir le bckgr sur tout le large, adapter le footer-->
         <div class="menu">
             <div class="main-nav">
                 <ul>
@@ -35,18 +36,26 @@
             </div>
         </div>
         <div class="body-include container">
-            <div class="a_propos-title">
-                <h1>PETSITTER</h1>
+            <div class="connexion_inscription-title">
+                <h1>CONNEXION / INSCRIPTION</h1>
             </div>
-            <div class="a_propos container">
-                <img src="images/img-a-propos.jpg" alt="image-petsitter">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea harum necessitatibus repellat consequuntur excepturi modi reprehenderit nobis unde molestiae. Placeat, quisquam quis sapiente accusamus totam vero animi dolores porro unde?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa enim veniam minus fugit perferendis eaque, hic voluptatum ipsam sapiente. Voluptates possimus animi commodi sequi ab at aspernatur quod excepturi a! Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, adipisci error illo necessitatibus voluptates quae sit! Omnis consequuntur dolore saepe soluta aspernatur? Eum dolor quis doloremque totam, assumenda asperiores eius. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur fuga necessitatibus possimus. Cupiditate, quas perferendis maiores temporibus magni consequatur similique quod sunt, provident facere rerum enim corporis illo, sequi reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia iste exercitationem, doloribus similique quibusdam facilis! Doloribus cum voluptate ut laboriosam magnam sunt. Culpa qui aspernatur a doloremque enim iste perferendis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita earum iure aliquid aut animi suscipit eaque doloribus qui labore temporibus, quidem deserunt reiciendis. Laborum ex architecto quas possimus voluptatem nobis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, voluptatibus! Earum deleniti molestias, ad cum hic magnam vero odio iure consectetur, mollitia totam. Minima natus labore doloremque dolores accusamus odit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae nulla, nobis voluptas nemo voluptates earum totam corporis omnis illo in magni vero deleniti nesciunt quod iure accusamus enim iusto at! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt illum quaerat tenetur quam, recusandae sequi quia sapiente laborum, animi sed obcaecati voluptatibus rerum? Animi corrupti quisquam omnis ad accusamus!</p>
+            <div class="connexion_inscription container">
+                <img src="images/img-connexion.jpg" alt="image-petsitter">
+                <div class="se_connecter">
+                    <h2>NOUS SOMMES HEUREUX DE VOUS REVOIR</h2>
+                    <button>SE CONNECTER</button>
+                </div>
+                <div class="inscription">
+                    <h2>INSCRIVEZ-VOUS POUR POUVOIR NOUS CONFIER VOTRE ANIMAL</h2>
+                    <button>S'INSCRIRE</button>
+                </div>
+
+
             </div>
         </div>
-
     </div>
-
 </body>
+
 <div class="footer">
     <div class="nav-footer">
         <ul>

@@ -1,0 +1,32 @@
+/*-----BODY-----*/
+
+body{
+    background-image: url(../images/img-background.jpg);
+    background-size: cover;
+}
+
+body>.container{
+    height: 800px;
+}
+
+.home-title>h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #7E6347;
+    font-size: 60px;
+    margin-bottom: 10px;
+    opacity: 0.95;
+}
+
+.home-title>h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #EFE3D6;
+    font-size: 60px;
+    margin-bottom: 10px;
+    opacity: 0.65;
+}
+
+.home-title>h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #EFE3D6;
+    font-size: 30px;
+}
