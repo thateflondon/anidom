@@ -1,8 +1,3 @@
-body{
-    background-image: url(../images/img-background.jpg);
-    background-size: cover;
-}
-
 
 /*-----HEADER-----*/
 
@@ -19,6 +14,14 @@ body{
     opacity: 0.75;
 }
 
+.main-nav>ul>li>a:hover,
+.main-nav>ul>li>a:focus{
+    background: #7E6347;
+    color: #FFF;
+
+}
+
+
 .main-nav>ul{
     display: flex;
     justify-content: space-between;
@@ -29,6 +32,7 @@ body{
 .sub-nav>ul{
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 
@@ -44,6 +48,12 @@ body{
     
 }
 
+.sub-nav>ul>li>a:hover,
+.sub-nav>ul>li>a:focus{
+    background: #D1A577;
+    color: rgb(223, 221, 221);
+}
+
 .sub-nav>ul{
     justify-content: space-between;
 }
@@ -52,9 +62,59 @@ body{
 
 /*-----BODY-----*/
 
+body{
+    background-image: url(../images/img-background.jpg);
+    background-size: cover;
+}
+
+body>.container{
+    height: 800px;
+}
+
+.home-title>h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #7E6347;
+    font-size: 60px;
+    margin-bottom: 10px;
+    opacity: 0.95;
+}
+
+.home-title>h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #D1A577;
+    font-size: 60px;
+    margin-bottom: 10px;
+    opacity: 0.65;
+}
+
+.home-title>h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #D1A577;
+    font-size: 30px;
+}
 
 
 
 /*-----FOOTER-----*/
 
+.footer{
+    height: 60px;
+    background-color: #D1A577;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   opacity: 0.8;
+}
 
+.footer-contact a{
+    color: #7E6347;
+    margin-right: 130px;
+}
+
+
+.nav-footer{
+    margin-top: 15px; /*Vérifier si pas de conflit sur les autres pages, si conflit enlever margin-top et retablir height .footer à 100px*/
+    width: 78px;
+    height: 50px;
+    margin-left: 130px;
+}
