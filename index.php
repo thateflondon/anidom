@@ -20,8 +20,8 @@
             <div class="main-nav">
                 <ul>
                     <li><a href="a_propos.php">A PROPOS</a></li>
-                    <li><a href="#">NOS SERVICES</a></li>
-                    <li><a href="#">CONNEXION</a></li>
+                    <li><a href="services.php">NOS SERVICES</a></li>
+                    <li><a href="connexion_inscription.php">CONNEXION</a></li>
                 </ul>
             </div>
             <div class="sub-nav">

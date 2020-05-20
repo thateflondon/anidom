@@ -36,3 +36,41 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: justify;
 }
+
+#se_connecter{
+    text-align: center;
+}
+
+#se_connecter h2{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+#se_connecter button{
+    color: #EFE3D6;
+    background-color: #7E6347;
+    border: 1px solid #7E6347;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 50px;
+}
+
+#sinscrire{
+    display: block;
+    text-align: center;
+}
+#sincrire h2{
+    font-weight: bold;
+}
+
+#sinscrire button{
+    color: #EFE3D6;
+    background-color: #7E6347;
+    border: 1px solid #7E6347;
+    padding: 10px 35px 10px 35px;
+    
+}
+
+.sinscrire-h2{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
