@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AniDom</title>
+    <title>Liste Complète des Animaux</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/liste_complete_animaux.css">
     <link rel="stylesheet" href="css/reset.css">
-
 </head>
 
 <body>
-    <div class="container">
+    <div class="">
+        <!--container désactivé pour avoir le bckgr sur tout la largeur, adapter le footer-->
         <div class="menu">
             <div class="main-nav">
                 <ul>
@@ -31,18 +31,21 @@
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="#">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
-                    <li><a href="#">Liste Animaux</a></li>
+                    <li><a href="liste_complete_animaux.php">Liste (complète des) Animaux</a></li>
                 </ul>
             </div>
         </div>
-        <div class="home-title">
-            <h1>PETSITTER</h1>
-            <h2>GARDE D’ANIMAUX</h2>
-            <h3>Ici ils sont les Rois !</h3>
+        <div class="body-include container">
+            <div class="liste_complete_animaux-title">
+                <h1>LISTE COMPLETE DES ANIMAUX</h1>
+            </div>
+            <div class="liste_complete_animaux container">
+                ecrire code ici !
+            </div>
         </div>
     </div>
-
 </body>
+
 <div class="footer">
     <div class="nav-footer">
         <ul>
