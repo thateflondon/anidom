@@ -14,7 +14,7 @@
 
 <body>
     <div class="">
-        <!--container désactivé pour avoir le bckgr sur tout le large, adapter le footer-->
+        <!--container désactivé pour avoir le bckgr sur tout la largeur, adapter le footer-->
         <div class="menu">
             <div class="main-nav">
                 <ul>
@@ -43,11 +43,11 @@
                 <div class="container">
                     <div id="se_connecter">
                         <h2>NOUS SOMMES HEUREUX DE VOUS REVOIR :</h2>
-                        <button>SE CONNECTER</button>
+                        <button><a href="#">SE CONNECTER</a></button>
                     </div>
                     <div id="sinscrire">
                     <h2 class=sinscrire-h2>INSCRIVEZ VOUS POUR POUVOIR NOUS CONFIER VOTRE ANIMAL DE COMPAGNIE :</h2>
-                        <button>S'INSCRIRE</button>
+                        <button><a href="#">S'INSCRIRE</a></button>
                     </div>
                 </div>
             </div>

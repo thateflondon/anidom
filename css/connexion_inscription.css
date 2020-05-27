@@ -52,6 +52,11 @@ body{
     border: 1px solid #7E6347;
     padding: 10px 20px 10px 20px;
     margin-bottom: 50px;
+    text-decoration: none;
+}
+
+#se_connecter>button>a{
+    color: #EFE3D6;
 }
 
 #sinscrire{
