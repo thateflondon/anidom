@@ -47,7 +47,7 @@
                         $data = $pdo->query($sql);
                         $html = '';
                         foreach ($data as $row) {
-                        $html .= '<a href="liste_animaux.php?type_name=' . $row['type_name'] . '" class="btn btn-primary m-1">' . $row['type_name'] . ' <span class="badge badge-light">' . $row['Nb'] . '</span></a>';
+                        $html .= '<a href="liste_animaux.php?type_name=' . $row['type_name'] . '" class="btn btn-primary m-5">' . $row['type_name'] . ' <span class="badge badge-light">' . $row['Nb'] . '</span></a>';
                         }
                         echo $html;
                     ?>
