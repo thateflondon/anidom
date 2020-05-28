@@ -1,18 +1,14 @@
-<?php
-include_once 'header_inc.php'; // Restauration et Test de la connexion
-include_once 'constants_inc.php'; // Import des constantes de connexion à la BDD
-?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Liste des animaux</title>
+    <title>Générique</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/liste_animaux.css">
+    <link rel="stylesheet" href="css/generique.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
@@ -30,71 +26,32 @@ include_once 'constants_inc.php'; // Import des constantes de connexion à la BD
             <div class="sub-nav">
                 <ul>
                     <li><a href="liste_animaux.php">Liste des Animaux</a></li>
-                    <li><a href="generique.php">Génériques</a></li>
+                    <li><a href="#">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="#">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
-                    <li><a href="#">Liste Animaux</a></li>
+                    <li><a href="liste_complete_animaux.php">Liste (complète des) Animaux</a></li>
                 </ul>
             </div>
         </div>
         <div class="body-include container">
-            <div class="liste_animaux-title">
-                <h1>LISTE DES ANIMAUX</h1>
+            <div class="generique-title">
+                <h1>GENERIQUES</h1>
             </div>
-            <div class="liste_animaux container">
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrum-item mr-3"><a href="index.php">Retour au Menu</a></li>
-                        <li class="breadcrum-item active">Liste des Animaux</li>
-                    </ol>
-                </nav>
-
-                <?php
-                try {
-                    // Connexion à BDD
-                    $dsn = 'mysql:host=' . HOST . ';dbname=' . BASE . ';charset=utf8';
-                    $opt = array(
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                    );
-                    $pdo = new PDO($dsn, USER, PASS, $opt);
-
-                    // Exécution requête SQL
-                    $sql = 'SELECT id_a, name, gender, dob, photo, type_name FROM animals JOIN types ON types_id_type = id_t';
-
-                    // Si parametre TYPE_NAME est passé dans l'URL alors on filtre
-                    if (isset($_GET['type_name']) && !empty($_GET['type_name'])) {
-                    $sql .= " WHERE type_name='".$_GET['type_name']."'";
-                    }
-                    $data = $pdo->query($sql);
-                ?>
-
-                <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Nom</th>
-                        <th>Genre</th>
-                        <th>Date de Naissance</th>
-                        <th>Photo</th>
-                        <th>Générique</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <?php
-                foreach ($data as $row) {
-                echo '<tr>';
-                foreach ($row as $col) {
-                    echo '<td>' . $col . '</td>';
-                }
-                echo '</tr>';
-                }
-                } catch (PDOException $err) {
-                echo '<div class="alert alert-danger">' . $err->getMessage() . '</div>';
-                }    
-                ?>
-                </table>
+            <div class="generique container">
+                <p>
+                    <?php
+                        include_once 'db_connect_inc.php'; // On se connecte à la BDD
+                        // Exécute la requête
+                        $sql = 'SELECT t.type_name, COUNT(*) AS Nb FROM animals a JOIN types t ON a.types_id_type=t.id_t GROUP BY t.type_name'; //On fait une jointure pour pouvoir associer la table animals et types
+                        $data = $pdo->query($sql);
+                        $html = '';
+                        foreach ($data as $row) {
+                        $html .= '<a href="liste_animaux.php?type_name=' . $row['type_name'] . '" class="btn btn-primary m-1">' . $row['type_name'] . ' <span class="badge badge-light">' . $row['Nb'] . '</span></a>';
+                        }
+                        echo $html;
+                    ?>
+                </p>
             </div>
         </div>
     </div>
@@ -144,6 +101,5 @@ include_once 'constants_inc.php'; // Import des constantes de connexion à la BD
         <a href="#">Contactez-Nous</a>
     </div>
 </div>
-</body>
 
 </html>
