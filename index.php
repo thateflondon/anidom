@@ -26,8 +26,8 @@
             </div>
             <div class="sub-nav">
                 <ul>
-                    <li><a href="liste_animaux.php">Liste des Animaux</a></li>
-                    <li><a href="generique.php">Génériques</a></li>
+                    <li><a href="animals_list.php">Liste des Animaux</a></li>
+                    <li><a href="types.php">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="#">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>

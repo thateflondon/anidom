@@ -12,7 +12,7 @@ include_once 'constants_inc.php'; // Import des constantes de connexion à la BD
     <title>Liste des animaux</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/liste_animaux.css">
+    <link rel="stylesheet" href="css/animals_list.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
@@ -29,8 +29,8 @@ include_once 'constants_inc.php'; // Import des constantes de connexion à la BD
             </div>
             <div class="sub-nav">
                 <ul>
-                    <li><a href="liste_animaux.php">Liste des Animaux</a></li>
-                    <li><a href="generique.php">Génériques</a></li>
+                    <li><a href="animals_list.php">Liste des Animaux</a></li>
+                    <li><a href="types.php">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="#">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
@@ -39,10 +39,10 @@ include_once 'constants_inc.php'; // Import des constantes de connexion à la BD
             </div>
         </div>
         <div class="body-include container">
-            <div class="liste_animaux-title">
+            <div class="animals_list-title">
                 <h1>LISTE DES ANIMAUX</h1>
             </div>
-            <div class="liste_animaux container">
+            <div class="animals_list container">
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrum-item mr-3"><a href="index.php">Retour au Menu</a></li>

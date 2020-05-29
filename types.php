@@ -8,7 +8,7 @@
     <title>Générique</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/generique.css">
+    <link rel="stylesheet" href="css/types.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
@@ -25,8 +25,8 @@
             </div>
             <div class="sub-nav">
                 <ul>
-                    <li><a href="liste_animaux.php">Liste des Animaux</a></li>
-                    <li><a href="#">Génériques</a></li>
+                    <li><a href="animals_list.php">Liste des Animaux</a></li>
+                    <li><a href="types.php">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="#">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
@@ -35,10 +35,10 @@
             </div>
         </div>
         <div class="body-include container">
-            <div class="generique-title">
+            <div class="types-title">
                 <h1>GENERIQUES</h1>
             </div>
-            <div class="generique container">
+            <div class="types container">
                 <p>
                     <?php
                         include_once 'db_connect_inc.php'; // On se connecte à la BDD
@@ -47,7 +47,7 @@
                         $data = $pdo->query($sql);
                         $html = '';
                         foreach ($data as $row) {
-                        $html .= '<a href="liste_animaux.php?type_name=' . $row['type_name'] . '" class="btn btn-primary m-5">' . $row['type_name'] . ' <span class="badge badge-light">' . $row['Nb'] . '</span></a>';
+                        $html .= '<a href="animals_list.php?type_name=' . $row['type_name'] . '" class="btn btn-primary m-5">' . $row['type_name'] . ' <span class="badge badge-light">' . $row['Nb'] . '</span></a>';
                         }
                         echo $html;
                     ?>
