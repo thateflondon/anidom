@@ -33,7 +33,7 @@ include_once 'db_connect_inc.php';
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="animals_edit.php">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
-                    <li><a href="liste_complete_animaux.php">Liste (complète des) Animaux</a></li>
+                    <li><a href="all_animals_list.php">Liste (complète des) Animaux</a></li>
                 </ul>
             </div>
         </div>
@@ -119,11 +119,11 @@ include_once 'db_connect_inc.php';
                     <fieldset>
                         <legend>Informations sur le propriétaire :</legend>
 
-                        <div class="group-control">
+                        <div class="group-control"> <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
                             <label for="title">Titre :</label>
                             <input type="text" class="form-control" value="<?php echo $row['title']; ?>" id="title" name="title">
                         </div>
-                        <! -- gerer en liste deroulante Mme Mr Mlle (changer attribut et passer en enum ??) -->
+                        <! -- gerer en liste deroulante Mme Mr Mlle (changer attribut et passer en enum ds BDD??) -->
 
                         <div class="group-control">
                             <label for="fname">Prénom :</label>

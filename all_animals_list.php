@@ -32,7 +32,7 @@ include_once 'db_connect_inc.php';
                     <li><a href="types.php">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
                     <li><a href="animals_edit.php">Ajouter un Animal</a></li>
-                    <li><a href="#">Gestion des Animaux</a></li>
+                    <li><a href="">Gestion des Animaux</a></li>
                     <li><a href="all_animals_list.php">Liste (complète des) Animaux</a></li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@ include_once 'db_connect_inc.php';
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrum-item mr-3"><a href="index.php">Retour au Menu</a></li>
-                        <li class="breadcrum-item selected"><a href="all_animals_list.php">Liste Complète des Animaux</a></li>
+                        <li class="breadcrum-item active"><a href="all_animals_list.php">Liste Complète des Animaux</a></li>
                     </ol>
                 </nav>
 
