@@ -1,5 +1,6 @@
 <?php
 include_once 'db_connect_inc.php';
+include_once 'functions_inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +72,6 @@ include_once 'db_connect_inc.php';
                         'gender' => '',
                         'dob' => '',
                         'types_id_type' => '',
-                        'owners_id_own' => '',
                         'photo' => '',
                     );
                     $update = false;
@@ -79,7 +79,7 @@ include_once 'db_connect_inc.php';
                 ?>
 
                 <form action="animals_action.php?id_a=<?php echo ($update ? $_GET['id_a'] : ''); ?>" method="post" enctype="multipart/form-data">
-
+                  
                     <fieldset>
                         <legend>Informations sur l'animal :</legend>
 
@@ -102,8 +102,14 @@ include_once 'db_connect_inc.php';
                             </div>
 
                             <div class="group-control">
-                                <label for="types_id_type">Générique :</label>
-                                <input type="text" class="form-control" value="<?php echo $row['types_id_type']; ?>" id="types_id_type" name="types_id_type">
+                                <p>Générique :</p>
+                                <?php
+                                $sql = 'SELECT id_t, type_name FROM types JOIN animals ON types_id_type';
+                                $qry = $pdo->query($sql);
+                                $data = $qry->fetchAll(PDO::FETCH_NUM);
+
+                                echo createSelect('types', $data);
+                                ?>
                             </div>
                             <! -- gerer le generique en liste deroulante -->
 
@@ -119,34 +125,41 @@ include_once 'db_connect_inc.php';
                     <fieldset>
                         <legend>Informations sur le propriétaire :</legend>
 
-                        <div class="group-control"> <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
-                            <label for="title">Titre :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['title']; ?>" id="title" name="title">
+                        <div class="group-control">
+                            <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
+                                <p>Titre</p>
+                                <?php
+                                $sql = 'SELECT id_o, title FROM owners';
+                                $qry = $pdo->query($sql);
+                                $data = $qry->fetchAll(PDO::FETCH_NUM);
+
+                                echo createSelect('owners', $data);
+                                ?>
                         </div>
                         <! -- gerer en liste deroulante Mme Mr Mlle (changer attribut et passer en enum ds BDD??) -->
 
-                        <div class="group-control">
-                            <label for="fname">Prénom :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['fname']; ?>" id="fname" name="fname" maxlength="50" required>
-                            <?php
-                            ?>
-                        </div>
+                            <div class="group-control">
+                                <label for="fname">Prénom :</label>
+                                <input type="text" class="form-control" value="<?php echo $row['fname']; ?>" id="fname" name="fname" maxlength="50" required>
+                                <?php
+                                ?>
+                            </div>
 
-                        <div class="group-control">
-                            <label for="name">Nom :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name">
-                        </div>
+                            <div class="group-control">
+                                <label for="name">Nom :</label>
+                                <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name">
+                            </div>
 
-                        <div class="group-control">
-                            <label for="mail">Adresse E-Mail :</label>
-                            <input type="email" class="form-control" value="<?php echo $row['mail']; ?>" id="mail" name="mail" required>
-                        </div>
+                            <div class="group-control">
+                                <label for="mail">Adresse E-Mail :</label>
+                                <input type="email" class="form-control" value="<?php echo $row['mail']; ?>" id="mail" name="mail" required>
+                            </div>
 
-                        <div class="group-control">
-                            <label for="city">Ville :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['city']; ?>" id="city" name="city">
-                        </div>
-    
+                            <div class="group-control">
+                                <label for="city">Ville :</label>
+                                <input type="text" class="form-control" value="<?php echo $row['city']; ?>" id="city" name="city">
+                            </div>
+
                     </fieldset>
 
                     <div class="group-control mt-3">
@@ -154,6 +167,7 @@ include_once 'db_connect_inc.php';
                     </div>
 
                 </form>
+                
 
             </div>
         </div>
