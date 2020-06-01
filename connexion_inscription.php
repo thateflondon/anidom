@@ -26,11 +26,11 @@
             <div class="sub-nav">
                 <ul>
                     <li><a href="animals_list.php">Liste des Animaux</a></li>
-                    <li><a href="#">Génériques</a></li>
+                    <li><a href="types.php">Génériques</a></li>
                     <li><a href="#">Propriétaires</a></li>
-                    <li><a href="#">Ajouter un Animal</a></li>
+                    <li><a href="animals_edit.php">Ajouter un Animal</a></li>
                     <li><a href="#">Gestion des Animaux</a></li>
-                    <li><a href="#">Liste Animaux</a></li>
+                    <li><a href="all_animals_list.php">Liste Animaux</a></li>
                 </ul>
             </div>
         </div>

@@ -19,7 +19,7 @@ include_once 'functions_inc.php';
 <body>
     <div class="">
         <!--container désactivé pour avoir le bckgr sur tout la largeur, adapter le footer-->
-        <div class="menu">
+        <div class="menu container">
             <div class="main-nav">
                 <ul>
                     <li><a href="a_propos.php">A PROPOS</a></li>
@@ -79,32 +79,36 @@ include_once 'functions_inc.php';
                 ?>
 
                 <form action="animals_action.php?id_a=<?php echo ($update ? $_GET['id_a'] : ''); ?>" method="post" enctype="multipart/form-data">
-                  
+
                     <fieldset>
                         <legend>Informations sur l'animal :</legend>
 
                         <div class="group-control">
                             <label for="name">Nom de l'animal :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name" maxlength="50" required>
+                            <input type="text" class="form-control" pattern="[A-Za-zàâäéèëêîïôöùûü\-]{2,30}" value="<?php echo $row['name']; ?>" id="name" name="name" maxlength="50" required>
                             <?php // Ici on rajoute value pour afficher les lignes récupérées dans la BDD
                             ?>
                         </div>
 
                         <div class="group-control">
                             <label for="gender">Genre :</label>
-                            <input type="enum" class="form-control" value="<?php echo $row['gender']; ?>" id="gender" name="gender">
+                            <select name="gender" id="gender" class="form-control">
+                                <option value="">--- Faites votre choix ---</option>
+                                <option value="F">Féminin</option>
+                                <option value="M">Masculin</option>
+                            </select>
                         </div>
                         <! -- gerer le enum en liste deroulante du genre -->
 
                             <div class="group-control">
                                 <label for="dob">Date de Naissance :</label>
-                                <input type="date" class="form-control" value="<?php echo $row['dob']; ?>" id="dob" name="dob" required>
+                                <input type="date" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" class="form-control" value="<?php echo $row['dob']; ?>" id="dob" name="dob" required>
                             </div>
-
+                            
                             <div class="group-control">
                                 <p>Générique :</p>
                                 <?php
-                                $sql = 'SELECT id_t, type_name FROM types JOIN animals ON types_id_type';
+                                $sql = 'SELECT id_t, type_name FROM types';
                                 $qry = $pdo->query($sql);
                                 $data = $qry->fetchAll(PDO::FETCH_NUM);
 
@@ -128,12 +132,18 @@ include_once 'functions_inc.php';
                         <div class="group-control">
                             <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
                                 <p>Titre</p>
+                                <select name="title" id="title" class="form-control">
+                                    <option value="">--- Faites votre choix ---</option>
+                                    <option value="Mlle">Mlle</option>
+                                    <option value="Mme">Mme</option>
+                                    <option value="Mr">Mr</option>
+                                </select>
                                 <?php
-                                $sql = 'SELECT id_o, title FROM owners';
-                                $qry = $pdo->query($sql);
-                                $data = $qry->fetchAll(PDO::FETCH_NUM);
+                                //$sql = 'SELECT id_o, title FROM owners';
+                                //$qry = $pdo->query($sql);
+                                //$data = $qry->fetchAll(PDO::FETCH_NUM);
 
-                                echo createSelect('owners', $data);
+                                //echo createSelect('owners', $data);
                                 ?>
                         </div>
                         <! -- gerer en liste deroulante Mme Mr Mlle (changer attribut et passer en enum ds BDD??) -->
@@ -167,7 +177,7 @@ include_once 'functions_inc.php';
                     </div>
 
                 </form>
-                
+
 
             </div>
         </div>

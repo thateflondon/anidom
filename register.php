@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Liste Complète des Animaux</title>
+    <title>Formulaire d'inscription</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/all_animals_list.css">
+    <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/reset.css">
 </head>
 
 <body>
-    <div class="">
+    <div class="container">
         <!--container désactivé pour avoir le bckgr sur tout la largeur, adapter le footer-->
         <div class="menu">
             <div class="main-nav">
@@ -36,11 +36,42 @@
             </div>
         </div>
         <div class="body-include container">
-            <div class="all_animals_list-title">
-                <h1>LISTE COMPLETE DES ANIMAUX</h1>
+            <div class="register-title">
+                <h1>FORMULAIRE D'INSCRIPTION</h1>
             </div>
-            <div class="all_animals_list container">
-                ecrire code ici !
+            <div class="register container">
+                <form action="register_action.php" method="post">
+                    <div class="form-group">
+                        <label for="title">Titre :</label>
+                        <select name="title" id="title" class="form-control">
+                            <option value="">--- Faites votre choix ---</option>
+                            <option value="Mlle">Mlle</option>
+                            <option value="Mme">Mme</option>
+                            <option value="Mr">Mr</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">Prénom :</label>
+                        <input type="text" id="fname" name="fname" class="form-control" maxlength="45"
+                            pattern="[A-Za-zàâäéèëêîïôöùûü\-]{2,30}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">Nom :</label>
+                        <input type="text" id="name" name="name" class="form-control" maxlength="45"
+                            pattern="[A-Za-zàâäéèëêîïôöùûü\-]{2,30}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">E-Mail :</label>
+                        <input type="email" name="mail" id="mail" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">Ville :</label>
+                        <input type="text" name="city" id="city" class="form-control">
+                    </div>
+
+                    <input type="submit" value="S'inscrire" class="btn btn-info">
+                </form>
             </div>
         </div>
     </div>

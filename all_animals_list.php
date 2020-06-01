@@ -112,7 +112,7 @@ include_once 'db_connect_inc.php';
                     echo '<p class="alert alert-danger">' . $err->getMessage() . '</p>';
                 }
                 ?>
-
+                    <a class="btn btn-success" href="animals_edit.php">AJOUTER UN ANIMAL</a>
                     <script>
                         // Branche un écouteur sur l'événement WINDOWS.ONLOAD
                         window.addEventListener(
