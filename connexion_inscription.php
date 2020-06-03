@@ -43,11 +43,11 @@
                 <div class="container">
                     <div id="se_connecter">
                         <h2>NOUS SOMMES HEUREUX DE VOUS REVOIR :</h2>
-                        <button><a href="#">SE CONNECTER</a></button>
+                        <button><a href="login.php">SE CONNECTER</a></button>
                     </div>
                     <div id="sinscrire">
                     <h2 class=sinscrire-h2>INSCRIVEZ VOUS POUR POUVOIR NOUS CONFIER VOTRE ANIMAL DE COMPAGNIE :</h2>
-                        <button><a href="#">S'INSCRIRE</a></button>
+                        <button><a href="register.php">S'INSCRIRE</a></button>
                     </div>
                 </div>
             </div>

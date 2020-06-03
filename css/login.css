@@ -20,3 +20,15 @@ body{
     justify-content: center;
     margin-bottom: 60px;
 }
+
+.modal{
+    background-color: #EFE3D6;
+}
+
+.modal-header{
+    background-color: #D1A577
+}
+
+.modal-body{
+    background-color: #D1A577;
+}

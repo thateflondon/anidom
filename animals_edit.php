@@ -80,12 +80,9 @@ include_once 'functions_inc.php';
 
                 <form action="animals_action.php?id_a=<?php echo ($update ? $_GET['id_a'] : ''); ?>" method="post" enctype="multipart/form-data">
 
-                    <fieldset>
-                        <legend>Informations sur l'animal :</legend>
-
                         <div class="group-control">
                             <label for="name">Nom de l'animal :</label>
-                            <input type="text" class="form-control" pattern="[A-Za-zàâäéèëêîïôöùûü\-]{2,30}" value="<?php echo $row['name']; ?>" id="name" name="name" maxlength="50" required>
+                            <input type="text" class="form-control" pattern="[A-Za-zàâäéèëêîïôöùûü\-]{2,30}" value="<?php echo $row['name']; ?>" id="name" name="name" maxlength="45" required>
                             <?php // Ici on rajoute value pour afficher les lignes récupérées dans la BDD
                             ?>
                         </div>
@@ -124,54 +121,6 @@ include_once 'functions_inc.php';
                                 </div>
 
                     </fieldset>
-
-
-                    <fieldset>
-                        <legend>Informations sur le propriétaire :</legend>
-
-                        <div class="group-control">
-                            <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
-                                <p>Titre</p>
-                                <select name="title" id="title" class="form-control">
-                                    <option value="">--- Faites votre choix ---</option>
-                                    <option value="Mlle">Mlle</option>
-                                    <option value="Mme">Mme</option>
-                                    <option value="Mr">Mr</option>
-                                </select>
-                                <?php
-                                //$sql = 'SELECT id_o, title FROM owners';
-                                //$qry = $pdo->query($sql);
-                                //$data = $qry->fetchAll(PDO::FETCH_NUM);
-
-                                //echo createSelect('owners', $data);
-                                ?>
-                        </div>
-                        <! -- gerer en liste deroulante Mme Mr Mlle (changer attribut et passer en enum ds BDD??) -->
-
-                            <div class="group-control">
-                                <label for="fname">Prénom :</label>
-                                <input type="text" class="form-control" value="<?php echo $row['fname']; ?>" id="fname" name="fname" maxlength="50" required>
-                                <?php
-                                ?>
-                            </div>
-
-                            <div class="group-control">
-                                <label for="name">Nom :</label>
-                                <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name">
-                            </div>
-
-                            <div class="group-control">
-                                <label for="mail">Adresse E-Mail :</label>
-                                <input type="email" class="form-control" value="<?php echo $row['mail']; ?>" id="mail" name="mail" required>
-                            </div>
-
-                            <div class="group-control">
-                                <label for="city">Ville :</label>
-                                <input type="text" class="form-control" value="<?php echo $row['city']; ?>" id="city" name="city">
-                            </div>
-
-                    </fieldset>
-
                     <div class="group-control mt-3">
                         <input type="submit" class="btn btn-info" value="<?php echo ($update ? 'Mettre à jour' : 'Ajouter'); ?>">
                     </div>
