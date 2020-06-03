@@ -15,7 +15,7 @@
 
 <body>
     <div class=""> <!--container désactivé pour avoir le bckgr sur tout le large, adapter le footer-->
-        <div class="menu">
+        <div class="menu container">
             <div class="main-nav">
                 <ul>
                     <li><a href="a_propos.php">A PROPOS</a></li>
