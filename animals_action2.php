@@ -1,10 +1,11 @@
 <?php
 // Import de connexion à la BDD (Etape 1)
 include_once 'db_connect_inc.php';
+include_once 'functions_inc.php';
 
 // Récupère les valeurs du formulaire (Etape 2)
 //(1ere methode: longue)
-if (isset($_POST['name']) && !empty($_POST['name'])) {
+/*if (isset($_POST['name']) && !empty($_POST['name'])) {
     $params[':name'] = htmlspecialchars($_POST['name']);
 } else {
     $params['name'] = null;
@@ -28,7 +29,7 @@ if (isset($_POST['photo']) && !empty($_POST['photo'])) {
     $params[':photo'] = htmlspecialchars($_POST['photo']);
 } else {
     $params['photo'] = null;
-}
+}*/
 /*
 if (isset($_POST['fname']) && !empty($_POST['fname'])) {
     $params[':fname'] = htmlspecialchars($_POST['fname']);
@@ -58,13 +59,13 @@ if (isset($_POST['city']) && !empty($_POST['city'])) {
 
 
 // Récupèration des valeurs du formulaire : 2nd itération (2e méthode de la boucle)
-/*foreach ($_POST as $key => $val) {
+foreach ($_POST as $key => $val) {
     if (isset($_POST[$key]) && !empty($_POST[$key])) {
         $params[':' . $key] = htmlspecialchars($val);
     } else {
         $params[':' . $key] = null;
     }
-*/
+$pass = get_password();
 //var_dump($_POST);
 
 /***************************************** 
@@ -156,16 +157,66 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_N
 try {
     if (isset($_GET['id_a']) && empty($_GET['id_a'])) {
         // Si id_a est vide alors INSERT
-        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, photo) VALUES (:name, :gender, :dob, :types_id_type, :photo)';
+        $sql = 'INSERT INTO owners(title, fname, name, mail, city, pass) VALUES (?, ?, ?, ?, ?, ?)';//voir si pass a enlever car non présent formulaire
+        $params = array($_POST['owners'],$_POST['fname'],$_POST['name'],$_POST['mail'],$_POST['city'],$pass);
+        $data = $pdo->prepare($sql);
+        $data->execute($params);
+        //var_dump();
+        $oid = $pdo->lastInsertId(); // creation de la variable $oid pr owners id
+
+
+        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (?, ?, ?, ?, ?, ?)';
+        $params = array($_POST['name_a'],$_POST['gender'],$_POST['dob'],$_POST['types_id_type'],$oid,$base64); // remplacer $_POST['owners_id_own] par $oid
+        $data = $pdo->prepare($sql);
+        $data->execute($params);
+        //var_dump();
+
+        
+        //Envoie du mail a l'Utilisateur:
+        // Prépare le corps du mail
+        $html = '<p>Bienvenue ' . $_POST['fname'] . ',';
+        $html .= '<p>Votre animal a bien été ajouté, vous pouvez désormais vous connecter en tant que membre en utilisant les accréditations suivantes :';
+        $html .= '<ul>';
+        $html .= '<li>Nom animal : ' . $_POST['name_a'];
+        $html .= '<li>Date de naissance : ' . $_POST['dob'];
+        $html .= '<li>Générique : ' . $_POST['types_id_type'];
+        $html .= '<ul>';
+        $html .= '<p>A très vite sur PetSitter.com !';
+ 
+ 
+        // Header du mail : IMPORTANT !!! 
+        $header = "MIME-Version: 1.0 \n"; // Version MIME
+        $header .= "Content-type: text/html;charset=utf-8 \n"; // Format du mail
+        $header .= "From: jerry.frederic.l@gmail.com \n"; // Expéditeur
+        $header .= "Reply-to: jerry.fpl@gmail.com \n"; // Destinataire de la réponse
+        $header .= "Disposition-Notification-To: jerry.frederic.l@gmail.com \n"; // Accusé de réception
+        $header .= "X-Priority: 1 \n"; // Important
+        $header .= "X-MSMail-Priority: High \n";
+ 
+        // Envoie le mail
+        // Pour Linux, installer un serveur de messagerie : http://www.postfix.org/
+        ini_set('SMTP', 'smtp.sfr.fr');
+        //ini_set('sendmail_from', 'jerry.frederic.l@gmail.com'); //WINDOWS ONLY !!! 
+        ini_set('sendmail_path', 'usr/sbin/sendmail');//ini_set('sendmail_path', '/chemin où se trouve sendmail.exe'); // LINUX only !!! 
+        mail($_POST['mail'], 'Confirmation Inscription Animal', $html, $header);
+ 
+        echo '<p>Nous avons bien enregistré votre animal !</p>';
+        } else {
+        echo '<p>Votre aniaml est déjà inscris sur notre plateforme !</p>';
+        }
+
         //$sql = 'INSERT INTO owners(title, fname, name, mail, city) VALUES (:title, :fname, :name, :mail, :city)';
-    } else {
+} else {
         // Si id_a n'est pas vide alors UPDATE
-        $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo WHERE id_a='.$_GET['id_a'];
+        $sql = 'UPDATE animals SET name=?, gender=?, dob=?, types_id_type=?, owners_id_own=?, photo=? WHERE id_a='.$_GET['id_a'];
+        $params = array($_POST['owners'],$_POST['fname'],$_POST['name'],$_POST['mail'],$_POST['city'],$pass);
+        $data = $pdo->prepare($sql);
+        $data->execute($params);
+
         //$sql = 'UPDATE owners SET title=:title, fname=:fname, name=:name, mail=:mail, city=:city WHERE id_a='.$GET['id_a'];
     }
-    $data = $pdo->prepare($sql);
-    $data->execute($params);
-    header('location:index.php');
+    
+    //header('location:index.php');
 } catch (PDOException $err) {
     echo $err->getMessage();
 }

@@ -1,5 +1,5 @@
 <?php
-include_once 'header_inc.php'; // Restauration et Test de la connexion
+//include_once 'header_inc.php'; // Restauration et Test de la connexion
 include_once 'constants_inc.php'; // Import des constantes de connexion à la BDD
 ?>
 <!DOCTYPE html>

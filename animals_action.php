@@ -1,6 +1,7 @@
 <?php
 // Import de connexion à la BDD (Etape 1)
 include_once 'db_connect_inc.php';
+session_start(); //vérifie si on est connecté
 
 // Récupère les valeurs du formulaire (Etape 2)
 //(1ere methode: longue)
@@ -23,6 +24,11 @@ if (isset($_POST['types_id_type']) && !empty($_POST['types_id_type'])) {
     $params[':types_id_type'] = htmlspecialchars($_POST['types_id_type']);
 } else {
     $params['types_id_type'] = null;
+}
+if (isset($_POST['owners_id_own']) && !empty($_POST['owners_id_own'])) {
+    $params[':owners_id_own'] = htmlspecialchars($_POST['owners_id_own']);
+} else {
+    $params['owners_id_own'] = $_SESSION['id_o']; //récupere ID owner stocké dans $_SESSION (login_action.php)
 }
 if (isset($_POST['photo']) && !empty($_POST['photo'])) {
     $params[':photo'] = htmlspecialchars($_POST['photo']);
@@ -156,16 +162,21 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_N
 try {
     if (isset($_GET['id_a']) && empty($_GET['id_a'])) {
         // Si id_a est vide alors INSERT
-        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, photo) VALUES (:name, :gender, :dob, :types_id_type, :photo)';
+        //$sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (?, ?, ?, ?, ?, ?)';
+        //$params = array($_POST['name'],$_POST['gender'],$_POST['dob'],$_POST['type_name'],$_POST['owners_id_own'],$_POST['photo']);
+        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (:name, :gender, :dob, :types_id_type, :owners_id_own, :photo)';
         //$sql = 'INSERT INTO owners(title, fname, name, mail, city) VALUES (:title, :fname, :name, :mail, :city)';
     } else {
         // Si id_a n'est pas vide alors UPDATE
+        //$sql = 'UPDATE animals SET name=?, gender=?, dob=?, types_id_type=?, owners_id_own=?, photo=? WHERE id_a='.$_GET['id_a'];
         $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo WHERE id_a='.$_GET['id_a'];
         //$sql = 'UPDATE owners SET title=:title, fname=:fname, name=:name, mail=:mail, city=:city WHERE id_a='.$GET['id_a'];
     }
+    //var_dump($params);
     $data = $pdo->prepare($sql);
     $data->execute($params);
-    header('location:index.php');
+    echo '<p>Votre animal a bien été enregistré !</p>';
+    //header('location:index.php');
 } catch (PDOException $err) {
     echo $err->getMessage();
 }

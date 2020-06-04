@@ -72,27 +72,28 @@ include_once 'functions_inc.php';
                         'gender' => '',
                         'dob' => '',
                         'types_id_type' => '',
-                        'photo' => '',
+                        'owners_id_own' => '',
+                        'photo' => ''
                     );
                     $update = false;
                 }
                 ?>
 
-                <form action="animals_action.php?id_a=<?php echo ($update ? $_GET['id_a'] : ''); ?>" method="post" enctype="multipart/form-data">
-                  
+                <form action="animals_action2.php?id_a=<?php echo ($update ? $_GET['id_a'] : ''); ?>" method="post" enctype="multipart/form-data">
+
                     <fieldset>
                         <legend>Informations sur l'animal :</legend>
 
                         <div class="group-control">
-                            <label for="name">Nom de l'animal :</label>
-                            <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name" maxlength="50" required>
+                            <label for="name_a">Nom de l'animal :</label>
+                            <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name_a" name="name_a" maxlength="50" required>
                             <?php // Ici on rajoute value pour afficher les lignes récupérées dans la BDD
                             ?>
                         </div>
 
                         <div class="group-control">
                             <label for="gender">Genre :</label>
-                            <input type="enum" class="form-control" value="<?php echo $row['gender']; ?>" id="gender" name="gender">
+                            <input type="text" class="form-control" value="<?php echo $row['gender']; ?>" id="gender" name="gender">
                         </div>
                         <! -- gerer le enum en liste deroulante du genre -->
 
@@ -104,13 +105,19 @@ include_once 'functions_inc.php';
                             <div class="group-control">
                                 <p>Générique :</p>
                                 <?php
-                                $sql = 'SELECT id_t, type_name FROM types JOIN animals ON types_id_type';
-                                $qry = $pdo->query($sql);
-                                $data = $qry->fetchAll(PDO::FETCH_NUM);
+                                $sql = 'SELECT id_t, type_name FROM types';
+                                $data = $pdo->query($sql);
+                                $array = $data->fetchAll(PDO::FETCH_NUM);
+                                echo createSelect('id_t', $array, $row['id_t']);
 
-                                echo createSelect('types', $data);
                                 ?>
                             </div>
+                            <div class="group-control">
+                            
+                                <label for="types_id_type">Générique2 :</label>
+                                <input type="text" class="form-control" value="<?php echo $row ['type_id_type']; ?>" id="types_id_type"  name="types_id_type"></label>
+                            </div>
+
                             <! -- gerer le generique en liste deroulante -->
 
                                 <div class="group-control">
@@ -118,6 +125,7 @@ include_once 'functions_inc.php';
                                     <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
                                     <input type="file" class="form-control" id="photo" name="photo">
                                 </div>
+
 
                     </fieldset>
 
@@ -129,7 +137,7 @@ include_once 'functions_inc.php';
                             <! -- Dois-je faire appel ici à animals_edit_owners qui contient les variables de connexion à la table owners -->
                                 <p>Titre</p>
                                 <?php
-                                $sql = 'SELECT id_o, title FROM owners';
+                                $sql = 'SELECT DISTINCT title, title FROM owners';
                                 $qry = $pdo->query($sql);
                                 $data = $qry->fetchAll(PDO::FETCH_NUM);
 
@@ -144,7 +152,7 @@ include_once 'functions_inc.php';
                                 <?php
                                 ?>
                             </div>
-
+                            
                             <div class="group-control">
                                 <label for="name">Nom :</label>
                                 <input type="text" class="form-control" value="<?php echo $row['name']; ?>" id="name" name="name">
@@ -167,7 +175,7 @@ include_once 'functions_inc.php';
                     </div>
 
                 </form>
-                
+
 
             </div>
         </div>

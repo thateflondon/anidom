@@ -15,7 +15,7 @@ if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['pass']) && 
     $pass = sha1(md5($pass) . sha1($mail)); // Ici on a crypté le mdp avec md5 qu'on a concatené avec le mail crypté en sha1 le tout crypté en sha1
 
     //Prépare la requête d'authentification
-    $sql = 'SELECT COUNT(*) As Nb FROM owners WHERE mail=? AND pass=?';
+    $sql = 'SELECT COUNT(*) As Nb, id_o FROM owners WHERE mail=? AND pass=? GROUP BY id_o';
     $params = array($mail, $pass);
     $data = $pdo->prepare($sql);
     $data->execute($params);
@@ -33,6 +33,7 @@ if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['pass']) && 
             $_SESSION['mail'] = $mail;
             $_SESSION['connection_time'] = date('Y-m-d h:i:s');
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR']; // Pour IP Localisation par exemple
+            $_SESSION['id_o'] = $row['id_o']; //Stock l'ID du propriétaire connecté
             // Créer un cookie
             setcookie('owners', json_encode($_SESSION), time() + 30 * 24 * 60 * 60);
             // Redirection vers INDEX
