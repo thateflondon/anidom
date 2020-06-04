@@ -1,7 +1,7 @@
 <?php
 include_once 'db_connect_inc.php';
 include_once 'functions_inc.php';
-include_once 'header_inc.php';
+//include_once 'header_inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
