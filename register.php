@@ -1,3 +1,6 @@
+<?php
+include_once 'header_inc.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -15,25 +18,37 @@
 
 <body>
     <div class="container">
-        <!--container désactivé pour avoir le bckgr sur tout la largeur, adapter le footer-->
-        <div class="menu container">
-            <div class="main-nav">
-                <ul>
-                    <li><a href="a_propos.php">A PROPOS</a></li>
-                    <li><a href="services.php">NOS SERVICES</a></li>
-                    <li><a href="connexion_inscription.php">CONNEXION</a></li>
-                </ul>
+        <div class="menu">
+            <div class="menu-div">
+                <div class="main-nav">
+                    <ul>
+                        <li><a href="a_propos.php">A PROPOS</a></li>
+                        <li><a href="services.php">NOS SERVICES</a></li>
+                    </ul>
+                </div>
+                <div class="main-nav2">
+                    <ul>
+                        <li><a href="connexion_inscription.php"
+                                style="display: <?php echo ($connected ? 'none' : '') ?>">CONNEXION</a></li>
+                        <li><a href="logout.php"
+                                style="display: <?php echo ($connected ? '' : 'none') ?>">DECONNEXION</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="sub-nav">
-                <ul>
-                    <li><a href="animals_list.php">Liste des Animaux</a></li>
-                    <li><a href="types.php">Génériques</a></li>
-                    <li><a href="#">Propriétaires</a></li>
-                    <li><a href="animals_edit.php">Ajouter un Animal</a></li>
-                    <li><a href="#">Gestion des Animaux</a></li>
-                    <li><a href="all_animals_list.php">Liste (complète des) Animaux</a></li>
-                </ul>
-            </div>
+        </div>
+
+        <div class="sub-nav">
+            <ul>
+                <li><a href="animals_list.php">Liste des Animaux</a></li>
+                <li><a href="types.php">Génériques</a></li>
+                <li><a href="sitters.php">Sitters</a></li>
+                <li><a href="animals_edit.php" style="display: <?php echo ($connected ? '' : 'none') ?>">Ajouter un
+                        Animal</a></li>
+                <li><a href="owners.php" style="display: <?php echo ($connected ? '' : 'none') ?>">Propriétaires</a>
+                </li>
+                <li><a href="all_animals_list.php" style="display: <?php echo ($connected ? '' : 'none') ?>">Gestion des
+                        Animaux</a></li>
+            </ul>
         </div>
         <div class="body-include container">
             <div class="register-title">
@@ -64,7 +79,7 @@
                         <label for="mail">E-Mail :</label>
                         <input type="email" name="mail" id="mail" class="form-control" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="city">Ville :</label>
                         <input type="text" name="city" id="city" class="form-control">
@@ -122,7 +137,7 @@
         </ul>
     </div>
     <div class="footer-contact">
-        <a href="#">Contactez-Nous</a>
+        <a href="http://localhost/wordpress/">Contactez-Nous</a>
     </div>
 </div>
 

@@ -1,6 +1,30 @@
 /*-----HEADER-----*/
 
+.menu-div{
+    display: flex; 
+}
+
+.menu-div>.main-nav>ul>li:nth-child(2){
+    position: static;
+    margin-left: 352px;
+}
+
 .main-nav>ul>li>a{
+    color: rgb(223, 221, 221);
+    background-color:#D1A577;
+    text-decoration: none;
+    border: 1px solid #D1A577;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    opacity: 0.75;
+}
+
+.main-nav2>ul>li>a{
+    position: absolute;
+    top: 13px; right: 130px;
     color: rgb(223, 221, 221);
     background-color:#D1A577;
     text-decoration: none;
@@ -17,9 +41,7 @@
 .main-nav>ul>li>a:focus{
     background: #7E6347;
     color: #FFF;
-
 }
-
 
 .main-nav>ul{
     display: flex;
@@ -55,10 +77,6 @@
 .sub-nav>ul{
     justify-content: space-between;
 }
-
-
-
-
 
 
 /*-----FOOTER-----*/

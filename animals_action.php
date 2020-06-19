@@ -35,33 +35,6 @@ if (isset($_POST['photo']) && !empty($_POST['photo'])) {
 } else {
     $params['photo'] = null;
 }
-/*
-if (isset($_POST['fname']) && !empty($_POST['fname'])) {
-    $params[':fname'] = htmlspecialchars($_POST['fname']);
-} else {
-    $params['fname'] = null;
-}
-if (isset($_POST['name']) && !empty($_POST['name'])) {
-    $params[':name'] = htmlspecialchars($_POST['name']);
-} else {
-    $params['name'] = null;
-}
-if (isset($_POST['title']) && !empty($_POST['title'])) {
-    $params[':title'] = htmlspecialchars($_POST['title']);
-} else {
-    $params['title'] = null;
-}
-if (isset($_POST['mail']) && !empty($_POST['mail'])) {
-    $params[':mail'] = htmlspecialchars($_POST['mail']);
-} else {
-    $params['mail'] = null;
-}
-if (isset($_POST['city']) && !empty($_POST['city'])) {
-    $params[':city'] = htmlspecialchars($_POST['city']);
-} else {
-    $params['city'] = null;
-}*/
-
 
 // Récupèration des valeurs du formulaire : 2nd itération (2e méthode de la boucle)
 /*foreach ($_POST as $key => $val) {
@@ -102,8 +75,6 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_N
 
     // Extensions autorisées
     $allowed_ext = array('bmp', 'gif', 'jpg', 'jpeg', 'png'); //parfois à mettre en MAJ sur certains OS
-
-
 
     /***************************************** 
      * 
@@ -153,26 +124,17 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_N
     $params[':photo'] = null;
 }
 
-//exit();
-
-//var_dump($_POST);
-//var_dump($params);
 
 // Préparation et exécution de la requête (Etape 3) gestion du bouton Insert ou Update
 try {
     if (isset($_GET['id_a']) && empty($_GET['id_a'])) {
         // Si id_a est vide alors INSERT
-        //$sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (?, ?, ?, ?, ?, ?)';
-        //$params = array($_POST['name'],$_POST['gender'],$_POST['dob'],$_POST['type_name'],$_POST['owners_id_own'],$_POST['photo']);
-        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (:name, :gender, :dob, :types_id_type, :owners_id_own, :photo)';
-        //$sql = 'INSERT INTO owners(title, fname, name, mail, city) VALUES (:title, :fname, :name, :mail, :city)';
+        $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (:name, :gender, :dob, :types_id_type, :owners_id_own, :photo)';   
     } else {
         // Si id_a n'est pas vide alors UPDATE
-        //$sql = 'UPDATE animals SET name=?, gender=?, dob=?, types_id_type=?, owners_id_own=?, photo=? WHERE id_a='.$_GET['id_a'];
-        $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo WHERE id_a='.$_GET['id_a'];
-        //$sql = 'UPDATE owners SET title=:title, fname=:fname, name=:name, mail=:mail, city=:city WHERE id_a='.$GET['id_a'];
+        $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo WHERE id_a='.$_GET['id_a'];     
     }
-    //var_dump($params);
+    
     $data = $pdo->prepare($sql);
     $data->execute($params);
     echo '<p>Votre animal a bien été enregistré !</p>';

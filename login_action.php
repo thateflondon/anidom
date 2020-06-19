@@ -16,6 +16,7 @@ if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['pass']) && 
 
     //Prépare la requête d'authentification
     $sql = 'SELECT COUNT(*) As Nb, id_o FROM owners WHERE mail=? AND pass=? GROUP BY id_o';
+    //$sql = 'SELECT COUNT(*) As Nb, id_o FROM owners WHERE mail=? AND pass=? GROUP BY id_o';
     $params = array($mail, $pass);
     $data = $pdo->prepare($sql);
     $data->execute($params);
@@ -31,11 +32,12 @@ if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['pass']) && 
             session_start();
             $_SESSION['connected'] = true;
             $_SESSION['mail'] = $mail;
+            //$_SESSION['level'] = row['type]; //gestion du level pour l'affichage selon level du user
             $_SESSION['connection_time'] = date('Y-m-d h:i:s');
             $_SESSION['ip'] = $_SERVER['REMOTE_ADDR']; // Pour IP Localisation par exemple
             $_SESSION['id_o'] = $row['id_o']; //Stock l'ID du propriétaire connecté
             // Créer un cookie
-            setcookie('owners', json_encode($_SESSION), time() + 30 * 24 * 60 * 60);
+            setcookie('owners', json_encode($_SESSION), time() + 30 * 24 * 60 * 60); //sauvegarde les infos de connexion comme par exemple le mdp si l'utilisateur le désire
             // Redirection vers INDEX
             header('location:index.php');
         } else {

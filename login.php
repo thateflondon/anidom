@@ -21,14 +21,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #D1A577;">
-                    <h5 class="modal-title" 
-                    style="color: #EFE3D6;
+                    <h5 class="modal-title" style="color: #EFE3D6;
                     font-size: 60px;
                     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                     font-weight: 400;
                     text-align: center;
                     margin-bottom: 10px; margin: 0 auto;">CONNEXION</h5>
-                    <button class="close" data-dismiss="modal">
+                    <button onclick="document.location.href='index.php'" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
@@ -53,7 +52,7 @@
                         </div>
                         <?php
                         if (isset($_GET['auth']) && !empty($_GET['auth']) && $_GET['auth'] === 'false') {
-                            echo '<div class="alert alert-danger">Login et/ou mot de passe incorrect</div>';
+                            echo '<div class="alert alert-danger">Vitre login et/ou mot de passe incorrect</div>';
                         }
                         //var_dump($_GET);
                         ?>

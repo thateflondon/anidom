@@ -24,7 +24,7 @@ function get_password($len=8) : string {
     return $pass;
 }
 
-//echo get_password(11); pour afficher le résultat et tester la fonction
+//echo get_password(11); //pour afficher le résultat et tester la fonction
 ?>
 
 <?php
