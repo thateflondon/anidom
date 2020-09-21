@@ -11,7 +11,7 @@ if (isset($_GET['id_a']) && !empty($_GET['id_a'])) {
         $data->execute($params);
         unset($pdo); // Déconnexion
 
-        // Redirige vers liste des hôtels
+        // Redirige vers liste des animaux
         header('location:all_animals_list.php');
     } catch (PDOException $err){
         echo '<p>' .$err->getMessage(). '</p>';

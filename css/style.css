@@ -1,17 +1,22 @@
 /*-----HEADER-----*/
 
-.menu-div{
-    display: flex; 
+html{
+    position: relative;
+    min-height: 100%;
+    margin-bottom: 50px;
+}
+.menu-div {
+    display: flex;
 }
 
-.menu-div>.main-nav>ul>li:nth-child(2){
+.menu-div>.main-nav>ul>li:nth-child(2) {
     position: static;
     margin-left: 352px;
 }
 
-.main-nav>ul>li>a{
+.main-nav>ul>li>a {
     color: rgb(223, 221, 221);
-    background-color:#D1A577;
+    background-color: #D1A577;
     text-decoration: none;
     border: 1px solid #D1A577;
     border-radius: 20px;
@@ -22,11 +27,12 @@
     opacity: 0.75;
 }
 
-.main-nav2>ul>li>a{
+.main-nav2>ul>li>a {
     position: absolute;
-    top: 13px; right: 130px;
+    top: 13px;
+    right: 340px;
     color: rgb(223, 221, 221);
-    background-color:#D1A577;
+    background-color: #D1A577;
     text-decoration: none;
     border: 1px solid #D1A577;
     border-radius: 20px;
@@ -37,27 +43,25 @@
     opacity: 0.75;
 }
 
-.main-nav>ul>li>a:hover,
-.main-nav>ul>li>a:focus{
+.main-nav>ul>li>a:hover, .main-nav>ul>li>a:focus {
     background: #7E6347;
     color: #FFF;
 }
 
-.main-nav>ul{
+.main-nav>ul {
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
     margin-bottom: 35px;
 }
 
-.sub-nav>ul{
+.sub-nav>ul {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
 }
 
-
-.sub-nav>ul>li>a{
+.sub-nav>ul>li>a {
     color: #7E6347;
     text-decoration: none;
     border: 1px solid #D1A577;
@@ -65,39 +69,41 @@
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    
 }
 
-.sub-nav>ul>li>a:hover,
-.sub-nav>ul>li>a:focus{
+.sub-nav>ul>li>a:hover, .sub-nav>ul>li>a:focus {
     background: #D1A577;
     color: rgb(223, 221, 221);
 }
 
-.sub-nav>ul{
+.sub-nav>ul {
     justify-content: space-between;
 }
 
-
 /*-----FOOTER-----*/
 
-.footer{
+.footer {
     height: 60px;
     background-color: #D1A577;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.8;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    
 }
 
-.footer-contact a{
+.footer-contact a {
     color: #7E6347;
     margin-right: 130px;
 }
 
-
-.nav-footer{
-    margin-top: 15px; /*Vérifier si pas de conflit sur les autres pages, si conflit enlever margin-top et retablir height .footer à 100px*/
+.nav-footer {
+    margin-top: 15px;
+    /*Vérifier si pas de conflit sur les autres pages, si conflit enlever margin-top et retablir height .footer à 100px*/
     width: 78px;
     height: 50px;
     margin-left: 130px;

@@ -33,7 +33,7 @@ if ((int) $row['Nb'] === 0) {
 
     //on traite le mot de passe autrement qd on ne reçoit pas encore le mmdp
     $pass = 'secret'; //get_password();
-    //$hash = sha1(md5($pass) . sha1($_POST['mail']));
+    $hash = sha1(md5($pass) . sha1($_POST['mail']));
 
 
     $params = array(
@@ -42,8 +42,8 @@ if ((int) $row['Nb'] === 0) {
         ':name' => htmlspecialchars($_POST['name']),
         ':mail' => htmlspecialchars($_POST['mail']),
         ':city' => htmlspecialchars($_POST['city']),
-        //':pass' => $hash
-        ':pass' => $pass
+        ':pass' => $hash
+        //':pass' => $pass
     );
     $data->execute($params);
 

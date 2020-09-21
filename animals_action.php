@@ -53,10 +53,10 @@ if (isset($_POST['photo']) && !empty($_POST['photo'])) {
  *****************************************/
 
 
-// Répuration du fichier à téléverser (Etape 4: intermediaire possible du 2 et 3)
-if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE)) { // tableau multidimensionnel + on rajoute la gestion d'entrée d'hotel sans photo avec UPLOAD_ERR_NO_FILE soit error 4 dans php.net et on rajoute un unset du param MAX_SIZE_FILE à la fin du traitement de fichier 
+// Récupération du fichier à téléverser (Etape 4: intermediaire possible du 2 et 3)
+if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_NO_FILE)) { // tableau multidimensionnel + on rajoute la gestion d'entrée d'animal sans photo avec UPLOAD_ERR_NO_FILE soit error 4 dans php.net et on rajoute un unset du param MAX_SIZE_FILE à la fin du traitement de fichier 
     // Variables
-    var_dump($_FILES);
+    //var_dump($_FILES);
     $file_name = $_FILES['photo']['name']; // on récupère le nom du fichier photo
     $file_ext = ''; // on recupère l'extension du fichier www/cp7bis/maphoto.jpg on peut egalement utiliser les fonctions suivantes:
     // SUBSTR    :   substr("Mareme, Salima et Tahia sont en vacances.", 18, 5) = "Tahia" on lui indique qu'on ne garde que Tahia 
@@ -125,14 +125,14 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['error'] !== UPLOAD_ERR_N
 }
 
 
-// Préparation et exécution de la requête (Etape 3) gestion du bouton Insert ou Update
+// Préparation et exécution de la requête (Etape 3) avec gestion du bouton Insert ou Update
 try {
     if (isset($_GET['id_a']) && empty($_GET['id_a'])) {
         // Si id_a est vide alors INSERT
         $sql = 'INSERT INTO animals(name, gender, dob, types_id_type, owners_id_own, photo) VALUES (:name, :gender, :dob, :types_id_type, :owners_id_own, :photo)';   
     } else {
         // Si id_a n'est pas vide alors UPDATE
-        $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo WHERE id_a='.$_GET['id_a'];     
+        $sql = 'UPDATE animals SET name=:name, gender=:gender, dob=:dob, types_id_type=:types_id_type, photo=:photo, owners_id_own=:owners_id_own WHERE id_a='.$_GET['id_a'];     
     }
     
     $data = $pdo->prepare($sql);

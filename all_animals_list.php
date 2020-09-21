@@ -68,7 +68,7 @@ include_once 'db_connect_inc.php';
                 try {
                     // Préparation et exécution requête
                     //$sql = 'SELECT * FROM animals WHERE types_id_type != 0 '; //Requete Ok (mais ne renvoie pas les nom des données proprio et generique)
-                    $sql = 'SELECT id_a AS "Code", name AS "Nom", gender AS "Genre" , dob AS "Date de Naissance", types_id_type AS "Générique", photo AS "Photo", owners_id_own AS "Propriétaire" FROM animals WHERE types_id_type != 0 ';
+                    $sql = 'SELECT id_a AS "Code", a.name AS "Nom", gender AS "Genre" , dob AS "Date de Naissance", t.type_name AS "Générique", photo AS "Photo", CONCAT(o.fname, \' \',o.name) AS "Propriétaire" FROM animals a JOIN types t ON a.types_id_type = t.id_t JOIN owners o ON a.owners_id_own = o.id_o WHERE types_id_type != 0 ';
                     $data = $pdo->prepare($sql);
                     $data->execute(); // Renvoie dataset avec colonnes et lignes
 

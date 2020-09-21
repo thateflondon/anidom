@@ -1,12 +1,20 @@
 /*-----BODY-----*/
 
+html{
+    position: relative;
+    min-height: 100%;
+}
+
 body{
     background-image: url(../images/img-background.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 60px;
 }
 
 body>.container{
     height: 800px;
+    
 }
 
 .home-title>h1{

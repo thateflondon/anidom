@@ -1,6 +1,6 @@
 <?php
 // 1. Taille du captcha : 6 caractères
-define('LENGTH', 7);
+define('LENGTH', 4);
 
 // 2. Crée les tableaux de caractères pour générer le captcha
 $num = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);  // archaïque

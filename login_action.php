@@ -25,7 +25,7 @@ if (isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['pass']) && 
     // Test authentification
     if ((int) $row['Nb'] === 1) {
         if ($_POST['captcha'] === $_SESSION['captcha']) { // on integre la vérification du captcha ds la boucle
-            // Suppprime la session en cours
+            // Supprime la session en cours
             session_unset();
             session_destroy();
             // Créer une nouvelle session

@@ -52,7 +52,7 @@
                         </div>
                         <?php
                         if (isset($_GET['auth']) && !empty($_GET['auth']) && $_GET['auth'] === 'false') {
-                            echo '<div class="alert alert-danger">Vitre login et/ou mot de passe incorrect</div>';
+                            echo '<div class="alert alert-danger">Votre login et/ou mot de passe est incorrect</div>';
                         }
                         //var_dump($_GET);
                         ?>
