@@ -106,6 +106,7 @@ include_once 'header_inc.php';
                                 class="form-control" value="<?php echo $row['dob']; ?>" id="dob" name="dob" required>
                         </div>
 
+                        <! -- gerer le generique en liste deroulante -->
                         <div class="group-control">
                             <p>Générique :</p>
                             <?php
@@ -116,8 +117,6 @@ include_once 'header_inc.php';
                             echo createSelect('types_id_type', $data); // je recupère uniquement le nom(type_name) dans la table types
                             ?>
                         </div>
-
-                        <! -- gerer le generique en liste deroulante -->
 
                             <div class="group-control">
                                 <label for="photo">Photo de l'animal :</label>

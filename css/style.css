@@ -98,7 +98,7 @@ html{
 
 .footer-contact a {
     color: #7E6347;
-    margin-right: 130px;
+    
 }
 
 .nav-footer {
@@ -106,5 +106,5 @@ html{
     /*Vérifier si pas de conflit sur les autres pages, si conflit enlever margin-top et retablir height .footer à 100px*/
     width: 78px;
     height: 50px;
-    margin-left: 130px;
+    
 }
