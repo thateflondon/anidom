@@ -1,3 +1,6 @@
+<?php
+include_once 'header_inc.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

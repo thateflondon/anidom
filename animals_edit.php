@@ -94,8 +94,8 @@ include_once 'header_inc.php';
                         <label for="gender">Genre :</label>
                         <select name="gender" id="gender" class="form-control">
                             <option value="">--- Faites votre choix ---</option>
-                            <option value="F">Féminin</option>
-                            <option value="M">Masculin</option>
+                            <option value="F">Femelle</option>
+                            <option value="M">Mâle</option>
                         </select>
                     </div>
                     <! -- gerer le genre(enum) en liste deroulante -->
